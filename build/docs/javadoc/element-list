@@ -1,0 +1,10 @@
+ru.testtask
+ru.testtask.commands
+ru.testtask.commands.cli
+ru.testtask.exceptions
+ru.testtask.game
+ru.testtask.models
+ru.testtask.models.factory
+ru.testtask.properties
+ru.testtask.utils
+ru.testtask.validation
