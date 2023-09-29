@@ -69,4 +69,4 @@ gradle clean build
 
 ## Связаться со мной
 
-Telegram: https://t.me/Syrnick# TestTask
+Telegram: https://t.me/Syrnick
