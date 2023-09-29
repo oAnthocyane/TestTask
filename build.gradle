@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'io.freefair.lombok' version '5.3.0'
+}
+
+group = 'ru.testtask'
+version = '1.0'
+
+mainClassName = 'ru.testtask.Main'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+}
+
+application {
+    mainClassName = 'ru.testtask.Main'
+}
+
+jar{
+    manifest {
+        attributes 'Main-Class': 'ru.testtask.Main',
+                'Class-Path' : '.'
+    }
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task generateJavadoc(type: Javadoc) {
+    sourceSets.main.allJava.srcDirs.each {
+        source it
+    }
+    classpath += configurations.compileClasspath
+    destinationDir = file("$buildDir/docs/javadoc")
+}
